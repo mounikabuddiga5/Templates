@@ -8,9 +8,11 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Register - Employee Management System</title>
+    <title>Registration - Employee Management System</title>
 
     <style>
+
+        /* ================= RESET ================= */
 
         * {
             margin: 0;
@@ -18,193 +20,335 @@
             box-sizing: border-box;
         }
 
+
+        /* ================= BODY ================= */
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+
             min-height: 100vh;
-        }
 
-        /* ================= NAVBAR ================= */
-
-        .navbar {
-            background-color: #222;
-            padding: 15px 30px;
             display: flex;
+            justify-content: center;
             align-items: center;
+
+            transition:
+                background-color 0.3s,
+                color 0.3s;
         }
 
-        .logo {
+
+        /* ================= LIGHT THEME ================= */
+
+        body.light {
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        body.light .register-container {
+            background-color: white;
+            color: #222;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light input[type="text"],
+        body.light input[type="password"] {
+            background-color: white;
+            color: #222;
+            border: 1px solid #ccc;
+        }
+
+
+        /* ================= DARK THEME ================= */
+
+        body.dark {
+            background-color: #121212;
             color: white;
-            font-size: 22px;
-            font-weight: bold;
-            margin-right: auto;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-links a {
+        body.dark .register-container {
+            background-color: #1e1e1e;
             color: white;
-            text-decoration: none;
-            font-size: 16px;
+
+            box-shadow:
+                0 4px 15px rgba(255, 255, 255, 0.08);
         }
 
-        .nav-links a:hover {
-            color: #00bcd4;
+        body.dark h2 {
+            color: white;
         }
 
-        .login-btn {
-            border: 1px solid #00bcd4;
-            padding: 8px 15px;
-            border-radius: 5px;
+        body.dark label {
+            color: #ddd;
         }
 
-        .login-btn:hover {
-            background-color: #00bcd4;
-            color: white !important;
+        body.dark input[type="text"],
+        body.dark input[type="password"] {
+            background-color: #2b2b2b;
+            color: white;
+            border: 1px solid #555;
         }
+
+        body.dark input::placeholder {
+            color: #aaa;
+        }
+
 
         /* ================= REGISTER CONTAINER ================= */
 
         .register-container {
-            width: 450px;
+
+            width: 420px;
             max-width: 90%;
-            margin: 60px auto;
-            background-color: white;
+
             padding: 35px;
+
             border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
+
+            transition:
+                background-color 0.3s,
+                color 0.3s;
         }
 
-        .register-container h2 {
+
+        /* ================= THEME BUTTONS ================= */
+
+        .theme-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        .theme-buttons a {
+
+            color: #00bcd4;
+
+            text-decoration: none;
+
+            border: 1px solid #00bcd4;
+
+            padding: 7px 12px;
+
+            border-radius: 5px;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .theme-buttons a:hover {
+
+            background-color: #00bcd4;
+
+            color: white;
+        }
+
+
+        /* ================= TITLE ================= */
+
+        h2 {
+
             text-align: center;
-            color: #222;
-            margin-bottom: 10px;
+
+            margin-bottom: 30px;
+
             font-size: 28px;
         }
 
-        .subtitle {
-            text-align: center;
-            color: #777;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
 
-        /* ================= FORM ================= */
+        /* ================= FORM GROUP ================= */
 
         .form-group {
+
             margin-bottom: 20px;
         }
 
+
+        /* ================= LABEL ================= */
+
         label {
+
             display: block;
-            margin-bottom: 7px;
-            color: #333;
-            font-weight: bold;
+
+            margin-bottom: 8px;
+
             font-size: 15px;
+
+            font-weight: bold;
         }
+
+
+        /* ================= INPUT ================= */
 
         input[type="text"],
         input[type="password"] {
+
             width: 100%;
+
             padding: 12px;
-            border: 1px solid #ccc;
+
             border-radius: 5px;
+
             font-size: 15px;
+
             outline: none;
-            transition: 0.2s;
+
+            transition:
+                background-color 0.3s,
+                color 0.3s,
+                border-color 0.3s;
         }
+
 
         input[type="text"]:focus,
         input[type="password"]:focus {
+
             border-color: #00bcd4;
-            box-shadow: 0 0 4px rgba(0, 188, 212, 0.3);
         }
+
 
         /* ================= BUTTONS ================= */
 
         .button-group {
+
             display: flex;
+
             gap: 10px;
-            margin-top: 25px;
+
+            margin-top: 10px;
         }
 
-        .register-btn {
+
+        input[type="submit"],
+        .reset-btn {
+
             flex: 1;
+
             padding: 12px;
-            border: none;
-            background-color: #00bcd4;
-            color: white;
-            font-size: 16px;
+
             border-radius: 5px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
             cursor: pointer;
+
+            transition: 0.3s;
         }
 
-        .register-btn:hover {
+
+        /* Register Button */
+
+        input[type="submit"] {
+
+            border: none;
+
+            background-color: #00bcd4;
+
+            color: white;
+        }
+
+        input[type="submit"]:hover {
+
             background-color: #0097a7;
         }
 
+
+        /* Reset Button */
+
         .reset-btn {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #ccc;
-            background-color: white;
-            color: #333;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+
+            border: 1px solid #777;
+
+            background-color: transparent;
+
+            color: inherit;
         }
 
         .reset-btn:hover {
-            background-color: #f0f0f0;
+
+            background-color: #777;
+
+            color: white;
         }
+
 
         /* ================= LOGIN LINK ================= */
 
-        .login-text {
+        .login-link {
+
             text-align: center;
-            margin-top: 25px;
-            color: #777;
+
+            margin-top: 20px;
+
             font-size: 14px;
         }
 
-        .login-text a {
-            color: #00a6bd;
+        .login-link a {
+
+            color: #00bcd4;
+
             text-decoration: none;
+
             font-weight: bold;
         }
 
-        .login-text a:hover {
+        .login-link a:hover {
+
             text-decoration: underline;
         }
 
+
+        /* ================= HOME LINK ================= */
+
+        .home-link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            color: #00bcd4;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .home-link:hover {
+
+            text-decoration: underline;
+        }
+
+
         /* ================= MOBILE ================= */
 
-        @media (max-width: 600px) {
-
-            .navbar {
-                padding: 15px;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links li:nth-child(1) {
-                display: none;
-            }
+        @media (max-width: 500px) {
 
             .register-container {
-                margin-top: 35px;
+
+                width: 95%;
+
                 padding: 25px;
+            }
+
+            h2 {
+
+                font-size: 24px;
+            }
+
+            .button-group {
+
+                flex-direction: column;
             }
 
         }
@@ -213,123 +357,103 @@
 
 </head>
 
-<body>
 
+<body class="{{ theme }}">
 
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-        <div class="logo">
-            Employee Management System
-        </div>
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="/">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="/login"
-                   class="login-btn">
-                    Login
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-    <!-- ================= REGISTER FORM ================= -->
 
     <div class="register-container">
 
+
+        <!-- ================= THEME BUTTONS ================= -->
+
+        <div class="theme-buttons">
+
+            <a href="/set-theme/light">
+                ☀ Light
+            </a>
+
+            <a href="/set-theme/dark">
+                🌙 Dark
+            </a>
+
+        </div>
+
+
+        <!-- ================= TITLE ================= -->
+
         <h2>
-            Create Account
+            Registration Form
         </h2>
 
-        <p class="subtitle">
-            Register to access the Employee Management System
-        </p>
+
+        <!-- ================= REGISTRATION FORM ================= -->
+
+        <form id="registrationForm"
+              action="/register"
+              method="post">
 
 
-        <form action="/register"
-              method="POST">
-
-
-            <!-- FULL NAME -->
+            <!-- Full Name -->
 
             <div class="form-group">
 
                 <label for="fullname">
-                    Full Name
+                    Full Name:
                 </label>
 
-                <input
-                    type="text"
-                    id="fullname"
-                    name="fullname"
-                    placeholder="Enter your full name"
-                    required>
+                <input type="text"
+                       id="fullname"
+                       name="fullname"
+                       placeholder="Enter your full name"
+                       required>
 
             </div>
 
 
-            <!-- USERNAME -->
+            <!-- Username -->
 
             <div class="form-group">
 
                 <label for="username">
-                    Username
+                    Username:
                 </label>
 
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="Enter your username"
-                    required>
+                <input type="text"
+                       id="username"
+                       name="username"
+                       placeholder="Enter username"
+                       required>
 
             </div>
 
 
-            <!-- PASSWORD -->
+            <!-- Password -->
 
             <div class="form-group">
 
                 <label for="password">
-                    Password
+                    Password:
                 </label>
 
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required>
+                <input type="password"
+                       id="password"
+                       name="password"
+                       placeholder="Enter password"
+                       required>
 
             </div>
 
 
-            <!-- BUTTONS -->
+            <!-- Buttons -->
 
             <div class="button-group">
 
-                <button
-                    type="submit"
-                    class="register-btn">
+                <input type="submit"
+                       value="Register">
 
-                    Register
-
-                </button>
-
-                <button
-                    type="reset"
-                    class="reset-btn">
+                <button type="button"
+                        class="reset-btn"
+                        onclick="resetForm()">
 
                     Reset
 
@@ -341,19 +465,45 @@
         </form>
 
 
-        <!-- LOGIN -->
+        <!-- ================= LOGIN LINK ================= -->
 
-        <p class="login-text">
+        <div class="login-link">
 
             Already have an account?
 
-            <a href="/login">
-                Login here
+            <a href="login.html">
+                Login
             </a>
 
-        </p>
+        </div>
+
+
+        <!-- ================= HOME LINK ================= -->
+
+        <a href="/"
+           class="home-link">
+
+            ← Back to Home
+
+        </a>
+
 
     </div>
+
+
+    <!-- ================= RESET SCRIPT ================= -->
+
+    <script>
+
+        function resetForm() {
+
+            document
+                .getElementById("registrationForm")
+                .reset();
+
+        }
+
+    </script>
 
 
 </body>
