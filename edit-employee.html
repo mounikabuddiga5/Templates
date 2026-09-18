@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Employee</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background-color: #222;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #00bcd4;
+        }
+
+        /* ================= FORM ================= */
+
+        .container {
+            width: 600px;
+            max-width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* ================= UPDATE BUTTON ================= */
+
+        .update-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            background-color: #00bcd4;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .update-btn:hover {
+            background-color: #0097a7;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .back-btn:hover {
+            color: #00bcd4;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            Employee Management System
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="/employees">
+                    Employees
+                </a>
+            </li>
+
+            <li>
+                <a href="/add-employee">
+                    Add Employee
+                </a>
+            </li>
+
+            <li>
+                <a href="/search">
+                    Search
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= EDIT FORM ================= -->
+
+    <div class="container">
+
+        <h1>
+            Edit Employee
+        </h1>
+
+
+        <form
+            action="/edit-employee/{{ employee['id'] }}"
+            method="POST">
+
+
+            <!-- EMPLOYEE ID -->
+
+            <label>
+                Employee ID
+            </label>
+
+            <input
+                type="text"
+                value="{{ employee['id'] }}"
+                readonly>
+
+
+            <!-- NAME -->
+
+            <label>
+                Employee Name
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                value="{{ employee['name'] }}"
+                required>
+
+
+            <!-- EMAIL -->
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                value="{{ employee['email'] }}"
+                required>
+
+
+            <!-- PHONE -->
+
+            <label>
+                Phone
+            </label>
+
+            <input
+                type="text"
+                name="phone"
+                value="{{ employee['phone'] }}"
+                required>
+
+
+            <!-- DEPARTMENT -->
+
+            <label>
+                Department
+            </label>
+
+            <input
+                type="text"
+                name="department"
+                value="{{ employee['department'] }}"
+                required>
+
+
+            <!-- SALARY -->
+
+            <label>
+                Salary
+            </label>
+
+            <input
+                type="number"
+                name="salary"
+                value="{{ employee['salary'] }}"
+                step="0.01"
+                required>
+
+
+            <!-- JOINING DATE -->
+
+            <label>
+                Joining Date
+            </label>
+
+            <input
+                type="date"
+                name="joining_date"
+                value="{{ employee['joining_date'] }}"
+                required>
+
+
+            <!-- ADDRESS -->
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                name="address"
+                required>{{ employee['address'] }}</textarea>
+
+
+            <!-- UPDATE -->
+
+            <button
+                type="submit"
+                class="update-btn">
+
+                Update Employee
+
+            </button>
+
+        </form>
+
+
+        <a href="/employees"
+           class="back-btn">
+
+            ← Back to Employees
+
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>

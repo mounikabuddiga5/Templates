@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Management System</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background-color: #222222;
+            padding: 18px 40px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+
+            margin-right: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #00bcd4;
+        }
+
+        .login-btn {
+            border: 1px solid #00bcd4;
+
+            padding: 8px 16px;
+
+            border-radius: 5px;
+        }
+
+        .register-btn {
+            background-color: #00bcd4;
+
+            padding: 8px 16px;
+
+            border-radius: 5px;
+        }
+
+        .register-btn:hover {
+            background-color: #0097a7;
+            color: white !important;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            text-align: center;
+
+            padding: 100px 20px;
+
+            background-color: white;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+
+            margin-bottom: 20px;
+
+            color: #222222;
+        }
+
+        .hero p {
+            font-size: 20px;
+
+            color: #666666;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+        }
+
+        .btn {
+            text-decoration: none;
+
+            padding: 13px 25px;
+
+            border-radius: 5px;
+
+            font-size: 17px;
+        }
+
+        .primary-btn {
+            background-color: #00bcd4;
+
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background-color: #0097a7;
+        }
+
+        .secondary-btn {
+            border: 1px solid #333333;
+
+            color: #333333;
+
+            background-color: white;
+        }
+
+        .secondary-btn:hover {
+            background-color: #333333;
+
+            color: white;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            padding: 60px 40px;
+
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 30px;
+
+            margin-bottom: 40px;
+
+            color: #222222;
+        }
+
+        .feature-container {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .feature-box {
+            background-color: white;
+
+            width: 30%;
+
+            padding: 30px 20px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box h3 {
+            margin-bottom: 15px;
+
+            color: #00a6bd;
+        }
+
+        .feature-box p {
+            color: #666666;
+
+            line-height: 1.5;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background-color: #222222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+
+            margin-top: 20px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 20px;
+            }
+
+            .logo {
+                margin-right: 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .feature-container {
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .feature-box {
+                width: 90%;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Employee Management System
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/employees">Employees</a>
+            </li>
+
+            <li>
+                <a href="/add-employee">Add Employee</a>
+            </li>
+
+            <li>
+                <a href="/search">Search</a>
+            </li>
+
+            <li>
+                <a href="/login" class="login-btn">Login</a>
+            </li>
+
+            <li>
+                <a href="/register" class="register-btn">Register</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>
+            Welcome to Employee Management System
+        </h1>
+
+        <p>
+            Manage your employees easily and efficiently.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/employees" class="btn primary-btn">
+                View Employees
+            </a>
+
+            <a href="/add-employee" class="btn secondary-btn">
+                Add Employee
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="features">
+
+        <h2>
+            Employee Management
+        </h2>
+
+        <div class="feature-container">
+
+
+            <div class="feature-box">
+
+                <h3>
+                    Employee Database
+                </h3>
+
+                <p>
+                    View all registered employees
+                    and their information in one place.
+                </p>
+
+            </div>
+
+
+            <div class="feature-box">
+
+                <h3>
+                    Add Employees
+                </h3>
+
+                <p>
+                    Easily add new employees with
+                    their name, email, phone, department,
+                    salary and joining date.
+                </p>
+
+            </div>
+
+
+            <div class="feature-box">
+
+                <h3>
+                    Search
+                </h3>
+
+                <p>
+                    Quickly search for employees
+                    using their name, email, phone
+                    or department.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <p>
+            Employee Management System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
