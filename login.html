@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="/static/theme.css">
+    <script src="/static/theme.js" defer></script>
+    
     <title>Login - Employee Management System</title>
 
     <style>
@@ -21,37 +24,6 @@
             min-height: 100vh;
         }
 
-        /* Navbar */
-        nav {
-            background: #222;
-            color: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #00bcd4;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00bcd4;
-        }
 
         /* Login Section */
         .login-container {
@@ -176,17 +148,18 @@
 
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">
-            Employee Management System
-        </div>
 
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/register">Register</a>
-        </div>
-    </nav>
+        <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">
+              🌙 Dark
+        </button>
+        <button id="themeBtn"
+        class="theme-btn"
+        onclick="toggleTheme()">
+    ☀️ Light
+</button>
+
+        
+        
 
     <!-- Login Form -->
     <div class="login-container">

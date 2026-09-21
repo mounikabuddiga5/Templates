@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <link rel="stylesheet" href="/static/theme.css">
+   <script src="/static/theme.js" defer></script>
+   
     <title>Employee Management System</title>
 
     <style>
@@ -101,16 +105,21 @@
             </li>
 
             <li>
-                <a href="/search">Search</a>
-            </li>
-
-            <li>
                 <a href="/login" class="login-btn">Login</a>
             </li>
 
             <li>
                 <a href="/register" class="register-btn">Register</a>
             </li>
+            <li><a href="/logout">Logout</a></li>
+            
+            <li>
+               <button id="themeBtn"
+                       class="theme-btn"
+                       onclick="toggleTheme()">
+             🌙 Dark
+            </button>
+           </li>
 
         </ul>
 

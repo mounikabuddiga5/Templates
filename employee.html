@@ -8,6 +8,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="/static/theme.css">
+    <script src="/static/theme.js" defer></script>
+
     <title>Employees</title>
 
     <style>
@@ -23,50 +26,35 @@
             background-color: #f5f5f5;
         }
 
-        /* ================= NAVBAR ================= */
+        /* ===== SEARCH BAR ===== */
 
-        .navbar {
-            background-color: #222;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-        }
+.search-form{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
 
-        .logo {
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            margin-right: auto;
-        }
+.search-form input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            gap: 20px;
-        }
+.search-btn{
+    background:#00bcd4;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
+.search-btn:hover{
+    background:#0097a7;
+}
 
-        .nav-links a:hover {
-            color: #00bcd4;
-        }
-
-        .login-btn {
-            border: 1px solid #00bcd4;
-            padding: 8px 15px;
-            border-radius: 5px;
-        }
-
-        .register-btn {
-            background-color: #00bcd4;
-            padding: 8px 15px;
-            border-radius: 5px;
-        }
 
         /* ================= CONTAINER ================= */
 
@@ -174,62 +162,19 @@
 </head>
 
 <body>
-
-
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-        <div class="logo">
-
-            Employee Management System
-
-        </div>
-
-
-        <ul class="nav-links">
-
             <li>
-                <a href="/">
-                    Home
-                </a>
+            <button id="themeBtn"
+                    class="theme-btn"
+                    onclick="toggleTheme()">
+                🌙 Dark
+             </button>
+             <button id="themeBtn"
+        class="theme-btn"
+        onclick="toggleTheme()">
+    ☀️ Light
+</button>
             </li>
 
-            <li>
-                <a href="/employees">
-                    Employees
-                </a>
-            </li>
-
-            <li>
-                <a href="/add-employee">
-                    Add Employee
-                </a>
-            </li>
-
-            <li>
-                <a href="/search">
-                    Search
-                </a>
-            </li>
-
-            <li>
-                <a href="/login"
-                   class="login-btn">
-                    Login
-                </a>
-            </li>
-
-            <li>
-                <a href="/register"
-                   class="register-btn">
-                    Register
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
 
 
     <!-- ================= EMPLOYEES ================= -->
@@ -239,6 +184,20 @@
         <h1>
             Employee Information
         </h1>
+
+        <form action="/employees" method="GET" class="search-form">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search by name, email, phone or department"
+        required>
+
+    <button type="submit" class="search-btn">
+        🔍 Search
+    </button>
+
+</form>
 
 
         <a href="/add-employee"
